@@ -8,6 +8,9 @@
 #define HEIGHT 300
 extern unsigned int pixels[WIDTH * HEIGHT];
 
+typedef unsigned char u8;
+typedef unsigned char f32;
+
 typedef struct{
   float x, y;
 }vec2;

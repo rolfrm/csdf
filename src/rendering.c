@@ -21,9 +21,6 @@ void draw_line (int x1, int x2, int y, unsigned int value){
 	 p[i] = value;
 }
 
-
-
-
 void draw_cube(int screen_x, int screen_y, int size, unsigned int color, int z_depth) {
     int half_size = size / 2;
     int quarter_size = size / 4;
