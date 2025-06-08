@@ -2,7 +2,7 @@
 #include "main.h"
 
 unsigned int pixels[WIDTH * HEIGHT];
-
+int test_level;
 void usleep(int time);
 // Draw a 3D cube in isometric projection
 
@@ -13,41 +13,7 @@ vec2 iso_project(vec3 pos){
   };
 }
 
-typedef enum{
-  SDF_SPHERE = 1,
-  SDF_OFFSET = 2
-}sdf_type;
-
-f32 vec3_length(vec3 p){
-  return sqrtf(p.x * p.x + p.y * p.y + p.z * p.z);
-}
-
-u8 read_u8(void ** p){
-  u8 * pu = *p;
-  *p += 1;
-  return pu[0];
-}
-
-u8 read_f32(void ** p){
-  f32 * pu = *p;
-  *p += 4;
-  return pu[0];
-}
-
-//#define vec3.length vec3_length
-
-f32 sdf_distance(u8 * sdf, vec3 p){
-  sdf_type t = read_u8(&sdf);
-  switch(t){
-  case SDF_SPHERE:
-	 {
-		f32 r = read_f32(&sdf);
-		return vec3_length(p) - r;
-	 }
-
-  }
-  return 0.0f;
-}
+void test_sdf();
 
 int main(int argc, char ** argv){
   int test = 0;
@@ -58,8 +24,7 @@ int main(int argc, char ** argv){
   }
 
   if(test){
-
-	 
+	 TEST(test_sdf);
 	 return 0;
   }
 

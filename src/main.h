@@ -3,13 +3,18 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
+#include <stdbool.h>
+#include <assert.h>
 
 #define WIDTH 300
 #define HEIGHT 300
 extern unsigned int pixels[WIDTH * HEIGHT];
 
+
 typedef unsigned char u8;
-typedef unsigned char f32;
+typedef signed char i8;
+typedef unsigned int u32;
+typedef float f32;
 
 typedef struct{
   float x, y;
@@ -27,3 +32,17 @@ typedef struct{
   int x, y, z;
 }camera;
 void draw_screen(camera * cam, float time);
+
+
+// testing
+extern int test_level;
+#define TEST(name) { \
+	 for(int i = 0; i < test_level; ++i) printf("  "); \
+    printf("Testing %s...\n", #name);						\
+    fflush(stdout); \
+	 test_level++;	  \
+    name(); \
+	 test_level--;														\
+		for(int i = 0; i < test_level; ++i) printf("  ");	\
+    printf("✔ %s\n", #name);									\
+}

@@ -17,7 +17,7 @@ DEPS     = $(OBJECTS:.o=.d)
 all: $(TARGET)
 
 $(TARGET): $(OBJECTS)
-	$(CC) $(OBJECTS) $(LDFLAGS) $(LIBS) -o $@
+	$(CC) $(OBJECTS) $(LDFLAGS) $(OPT) $(LIBS) -o $@
 
 # Compilation rules
 $(SRC_DIR)/%.o: $(SRC_DIR)/%.c
@@ -35,8 +35,7 @@ clean:
 	rm -f $(TARGET) $(OBJECTS) $(DEPS)
 
 test: $(TARGET)
-	./$(TARGET) test
-
+	./$(TARGET) --test
 # Auto include dependencies
 -include $(DEPS)
 
