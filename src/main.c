@@ -31,11 +31,9 @@ int main(int argc, char ** argv){
   camera cam = {0};
   
   MiniWindow * win = mw_create_window(WIDTH,HEIGHT, pixels, "hello");
-  int i = 0;
   unsigned int value = 0xFFFF;
   float time = 0.0;
   while(1){
-	 i++;
 	 time += 0.016;
 	 value = value  + 131432312;
 	 memset(pixels, 0xFF, sizeof(pixels));

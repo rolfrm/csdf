@@ -1,8 +1,8 @@
 # Config
 CC       = clang
 OPT      = -Os -g1
-CFLAGS   = -Isrc/ $(OPT) -MMD
-LDFLAGS  = -L. -framework Cocoa -framework IOKit
+CFLAGS   = -Isrc/ $(OPT) -MMD -Wall -Werror -std=c23
+LDFLAGS  = -L. -framework Cocoa -framework IOKit 
 LIBS     = -lm
 TARGET   = isosdf
 SRC_DIR  = src

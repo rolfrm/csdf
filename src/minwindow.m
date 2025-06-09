@@ -33,38 +33,9 @@ struct __MiniWindow {
   void (* on_key_event)(MiniWindow * win, int key, int state);
 };
 
-static void* run_app(void *arg) {
-    @autoreleasepool {
-        [NSApplication sharedApplication];
-        [NSApp run];
-    }
-    return NULL;
-}
-
-@interface AppHelper : NSObject
-@end
-
-
-@implementation AppHelper
-
-- (void)selectedKeyboardInputSourceChanged:(NSObject* )object
-{
-    //updateUnicodeData();
-}
-
-- (void)doNothing:(id)object
-{
-}
-
-@end // GLFWHelper
-
 // Exposed C API:
 MiniWindow * mw_create_window(int width, int height, uint32_t * framebuffer, const char* title) {
 @autoreleasepool {
-     AppHelper * helper = [[AppHelper alloc] init];
-    [NSThread detachNewThreadSelector:@selector(doNothing:)
-                             toTarget:helper
-                           withObject:nil];
     [NSApplication sharedApplication];
     [NSApp setActivationPolicy:NSApplicationActivationPolicyRegular];
     __block MiniWindow* mw = malloc(sizeof(MiniWindow));
@@ -86,7 +57,8 @@ MiniWindow * mw_create_window(int width, int height, uint32_t * framebuffer, con
 	 [mw->window setContentView:mw->view];
 	 [mw->window makeKeyAndOrderFront:nil];
 	 [mw->window orderFront:nil];
-	 
+
+	 // setup the framebuffer based on the pixel pointer,
     CGColorSpaceRef cs = CGColorSpaceCreateDeviceRGB();
 	 
 	 CGDataProviderRef dp = CGDataProviderCreateWithData(0, framebuffer, width * height * 4, 0);

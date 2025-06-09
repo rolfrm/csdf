@@ -6,11 +6,12 @@
 #include <stdbool.h>
 #include <assert.h>
 
+
 #define WIDTH 300
 #define HEIGHT 300
 extern unsigned int pixels[WIDTH * HEIGHT];
 
-
+typedef size_t u64;
 typedef unsigned char u8;
 typedef signed char i8;
 typedef unsigned int u32;

@@ -114,7 +114,7 @@ void draw_screen(camera * cam, float time){
 		vec2 sp = iso_project(surf);
 
 		if((i==-3 || i==2 || i == 1 || i == -1 || i == 3) && j == 0 && k == 0){
-		  vec2 mid = sp;
+		  //vec2 mid = sp;
 		  vec3 surf0 = surf;
 		  surf.y = surf.y + 64;
 		  //surf.x = surf.x - 64;
